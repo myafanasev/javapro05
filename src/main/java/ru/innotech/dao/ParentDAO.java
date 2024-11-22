@@ -20,14 +20,13 @@ public abstract class ParentDAO {
         this.connection = connection;
     }
 
-    public ParentDAO() {
-        Class<?> cls = User.class;
+    public ParentDAO(Class c) {
+        Class<?> cls = c;
 
         // получим имя таблицы
         if (cls.isAnnotationPresent(TableName.class)) // если есть аннотация с именем таблицы
             tableName = cls.getAnnotation(TableName.class).value();
         else tableName = cls.getSimpleName();
-
         // получим информацию о колонках таблицы
         for (Field f : cls.getDeclaredFields()) {
             String nameColumn;
