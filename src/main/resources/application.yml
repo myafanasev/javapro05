@@ -1,0 +1,6 @@
+server:
+    port: 8081
+datasource:
+    url: jdbc:postgresql://localhost:5432/javapro05
+    username: postgres
+    password: "1234"
