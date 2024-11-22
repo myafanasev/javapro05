@@ -19,6 +19,9 @@ import java.util.Map;
 
 @Component
 public class UserDAO extends ParentDAO {
+    public UserDAO() {
+        super(User.class);
+    }
 
     @SneakyThrows
     public List<User> findAll() { // получение всех пользователей
@@ -40,21 +43,18 @@ public class UserDAO extends ParentDAO {
 
     @SneakyThrows
     public User findId(long ident) { // получение пользователя по ID
-        Statement statement = connection.createStatement();
-
         String query = "select " + columns.get("id") + ", " + columns.get("user") + " from " + tableName + " where " + columns.get("id") + " = " + ident;
+        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 
-        User userData = new User();
         while (resultSet.next()) {
-            userData.setId(resultSet.getInt(columns.get("id")));
-            userData.setUser(resultSet.getString(columns.get("user")));
-            break;
+            long id = resultSet.getInt(columns.get("id"));
+            String name = resultSet.getString(columns.get("user"));
+            return new User(id, name);
         }
 
         statement.close();
-        if (userData.getId() == 0) return null;
-        return userData;
+        return null;
     }
 
     @SneakyThrows
