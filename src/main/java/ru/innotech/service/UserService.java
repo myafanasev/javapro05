@@ -16,19 +16,16 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public List<User> findAll() {
-        return userDAO.findAll();
-    }
+    public List<User> findAll() { return userDAO.findAll(); }
 
-    public User findId(long ident) {
-        return userDAO.findId(ident);
-    }
+    public User findId(long ident) { return userDAO.findId(ident); }
 
-    public void delete(long ident) {
-        userDAO.delete(ident);
-    }
+    public void delete(User user) {userDAO.delete(user);}
 
-    public void create(String name) {
-        userDAO.create(name);
+    public User save(User user) {
+        if (userDAO.findId(user.getId()) != null)  // если это update
+            return userDAO.update(user);
+        else // значит iinsert
+            return userDAO.insert(user);
     }
 }
