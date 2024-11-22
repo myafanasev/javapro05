@@ -43,7 +43,7 @@ public class UserProductDAO extends ParentDAO{
     }
     @SneakyThrows
 
-    public UserProduct findId(long idProduct) { // получение всех продуктов всех клиентов или конкретного
+    public UserProduct findId(long idProduct) { // получение продукта по ID
         Statement statement = connection.createStatement();
         String query = "select " + columns.get("id") + ", " + columns.get("userId") + ", " + columns.get("accNum")  + ", " + columns.get("balance")+ ", " + columns.get("type") + " from " + tableName + " where " + columns.get("id") + " = " + idProduct;;
 
