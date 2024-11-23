@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cglib.proxy.Dispatcher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.sql.Connection;
 
@@ -12,11 +13,6 @@ import java.sql.Connection;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Main.class);
-        //System.out.println(ctx.getBean(DispatcherServlet));
-        //        ApplicationContext ctx = new AnnotationConfigApplicationContext("ru.innotech");
-        TransformApplication transformApplication = ctx.getBean(TransformApplication.class);
-//        Connection connection = ctx.getBean(Connection.class);
-      transformApplication.run();
     }
 }
 
