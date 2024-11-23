@@ -37,11 +37,4 @@ public class RestUserController {
         if (userProduct==null) throw new ProductNotFound(); // если продукт не найден, бросаем исключение
         return userProduct;
     }
-
-//    public ResponseEntity<UserProduct> getProduct(@RequestParam("id") int idProduct) {
-//        UserProduct userProduct = userProductService.findId(idProduct);
-//        //return ResponseEntity.ok().body(userProduct);
-//
-//        return ResponseEntity.status(404).build();
-//    }
 }
